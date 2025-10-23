@@ -1,0 +1,104 @@
+﻿@model IEnumerable<InventoryApp.Models.Order>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h3 class="mb-4 text-light">Admin Dashboard</h3>
+
+<div class="row mb-4 text-center">
+    <div class="col-md-4">
+        <div class="card p-3 bg-primary text-white shadow">
+            <h6>Total Products</h6><h2>@ViewBag.TotalProducts</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 bg-success text-white shadow">
+            <h6>Total Orders</h6><h2>@ViewBag.TotalOrders</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 bg-info text-white shadow">
+            <h6>Total Users</h6><h2>@ViewBag.TotalUsers</h2>
+        </div>
+    </div>
+</div>
+
+<h4 class="mb-3 text-light">Recent Orders</h4>
+<div class="table-responsive">
+    <table class="table table-hover align-middle table-dark table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Status</th>
+                <th>Ordered</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <td>@o.Id</td>
+                    <td>@o.User?.FullName</td>
+                    <td>@o.Product?.Name</td>
+                    <td>@o.Quantity</td>
+                    <td>
+                        @if (o.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else if (o.Status == "Shipped")
+                        {
+                            <span class="badge bg-info text-dark">Shipped</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Completed</span>
+                        }
+                    </td>
+                    <td>@o.OrderedAt.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#detailsModal@o.Id"><i class="fa fa-eye"></i></button>
+                        <form asp-action="UpdateStatus" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@o.Id" />
+                            <select name="status" class="form-select form-select-sm d-inline w-auto bg-dark text-white border-secondary" onchange="this.form.submit()">
+                                <option value="Pending" selected="@(o.Status=="Pending")">Pending</option>
+                                <option value="Shipped" selected="@(o.Status=="Shipped")">Shipped</option>
+                                <option value="Completed" selected="@(o.Status=="Completed")">Completed</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@foreach (var o in Model)
+{
+    <!-- Order Details Modal -->
+    <div class="modal fade" id="detailsModal@o.Id" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Order #@o.Id Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><b>Customer:</b> @o.User?.FullName (@o.User?.Email)</p>
+                    <p><b>Product:</b> @o.Product?.Name</p>
+                    <p><b>Quantity:</b> @o.Quantity</p>
+                    <p><b>Total:</b> @(o.Product?.Price * o.Quantity ?? 0) PKR</p>
+                    <p><b>Status:</b> @o.Status</p>
+                    <p><b>Date:</b> @o.OrderedAt.ToString("dd MMM yyyy hh:mm tt")</p>
+                    @if (!string.IsNullOrEmpty(o.Notes))
+                    {
+                        <p><b>Notes:</b> @o.Notes</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

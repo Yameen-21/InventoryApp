@@ -1,0 +1,29 @@
+﻿@model InventoryApp.Models.Order
+@{
+    ViewData["Title"] = "Place Order";
+    var product = ViewBag.Product as InventoryApp.Models.Product;
+}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card p-4 shadow">
+            <h4 class="mb-3">Order Product</h4>
+
+            <div class="mb-3">
+                <strong>Product:</strong> @product?.Name <br />
+                <strong>Category:</strong> @product?.Category <br />
+                <strong>Price:</strong> @product?.Price.ToString("N0") PKR
+            </div>
+
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="ProductId" />
+                <div class="mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input asp-for="Quantity" type="number" class="form-control" min="1" max="100" />
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Order</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model InventoryApp.Models.User
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card p-4 shadow">
+            <h3 class="mb-3 text-center">Create User Account</h3>
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Error"]</div>
+            }
+
+            <form asp-action="Register" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input asp-for="FullName" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" required />
+                </div>
+
+                <input type="hidden" asp-for="Role" value="User" />
+
+                <button type="submit" class="btn btn-success w-100">Register</button>
+            </form>
+
+            <p class="mt-3 text-center small text-secondary">
+                Already have an account?
+                <a asp-action="Login" class="text-info">Login</a>
+            </p>
+        </div>
+    </div>
+</div>

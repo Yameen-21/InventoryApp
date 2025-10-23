@@ -1,0 +1,44 @@
+﻿@model IEnumerable<InventoryApp.Models.Product>
+@{
+    ViewData["Title"] = "Manage Products";
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Manage Products</h3>
+    <a class="btn btn-primary" asp-action="Create"><i class="fa fa-plus"></i> Add Product</a>
+</div>
+
+<form method="get" class="input-group mb-3">
+    <input class="form-control" type="text" name="search" placeholder="Search products..." />
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-dark table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Added</th>
+                <th style="width:160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>@item.Price.ToString("N0")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.CreatedAt.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

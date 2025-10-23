@@ -1,0 +1,17 @@
+﻿@model InventoryApp.Models.Product
+@{
+    ViewData["Title"] = "Delete Product";
+}
+<h3 class="text-danger mb-3">Delete Product</h3>
+
+<div class="card p-4">
+    <p>Are you sure you want to delete <b>@Model.Name</b>?</p>
+    <p>Category: @Model.Category</p>
+    <p>Price: @Model.Price.ToString("N0")</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
