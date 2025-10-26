@@ -1,34 +1,33 @@
-````markdown
 # 🧾 InventoryApp
 
-A simple yet complete ASP.NET Core MVC web application for managing products, orders, and users.  
-This project demonstrates **role-based authentication**, **Entity Framework Core integration**, and **basic CRUD operations** for both Admin and User roles.
+A modern and complete **ASP.NET Core MVC** web application for managing products, orders, and users.  
+It showcases **role-based authentication**, **Entity Framework Core**, and **CRUD operations** for both Admin and User roles — designed to demonstrate full-stack development skills with clean architecture and responsive UI.
 
 ---
 
 ## 🚀 Features
 
 ### 👨‍💼 Admin Panel
-- Login as admin (`admin@example.com / admin123`)
+- Secure admin login (`admin@example.com / admin123`)
 - Manage products (Add, Edit, Delete)
-- View and manage all orders
-- Monitor total sales and users
+- View and manage all user orders
+- Monitor total sales and registered users
 
 ### 🙍‍♂️ User Panel
-- Register and login as a normal user
-- Browse and order products
-- View order history and details
-- Secure session-based authentication
+- User registration and login
+- Browse products and place orders
+- View detailed order history
+- Protected routes with session-based authentication
 
 ---
 
 ## 🏗️ Tech Stack
 
-- **Frontend:** Razor Pages (HTML, CSS, Bootstrap)
-- **Backend:** ASP.NET Core MVC (.NET 8)
-- **Database:** Microsoft SQL Server (EF Core Code First)
-- **Authentication:** Cookie-based login system
-- **ORM:** Entity Framework Core
+- **Frontend:** Razor Pages, HTML5, CSS3, Bootstrap 5  
+- **Backend:** ASP.NET Core MVC (.NET 8)  
+- **Database:** Microsoft SQL Server (Code First with EF Core)  
+- **Authentication:** Cookie-based user sessions  
+- **ORM:** Entity Framework Core  
 
 ---
 
@@ -38,61 +37,60 @@ This project demonstrates **role-based authentication**, **Entity Framework Core
    ```bash
    git clone https://github.com/Yameen-21/InventoryApp.git
    cd InventoryApp
-````
+   ```
 
 2. **Open the project** in Visual Studio
 
-3. **Update the connection string**
-
-   * Open `appsettings.json`
-   * Replace the SQL connection string under `"DefaultConnection"` with your own
+3. **Update your database connection**
+   - Open `appsettings.json`
+   - Replace `"DefaultConnection"` with your own SQL Server connection string
 
 4. **Run EF migrations**
-
    ```bash
    Add-Migration Initial
    Update-Database
    ```
 
 5. **Run the project**
-
-   * Press `Ctrl + F5` in Visual Studio
-   * The app will open in your browser at:
-     `https://localhost:xxxx`
+   - Press `Ctrl + F5` in Visual Studio  
+   - The app will open automatically at `https://localhost:xxxx`
 
 ---
 
 ## 🔑 Admin Login
 
 | Role        | Email                                         | Password |
-| ----------- | --------------------------------------------- | -------- |
-| Admin       | [admin@example.com](mailto:admin@example.com) | admin123 |
-| User (demo) | [user@example.com](mailto:user@example.com)   | user123  |
+| ------------ | --------------------------------------------- | -------- |
+| Admin        | [admin@example.com](mailto:admin@example.com) | admin123 |
+| User (Demo)  | [user@example.com](mailto:user@example.com)   | user123  |
 
 ---
 
 ## 🧠 About the Project
 
-This project was created as a learning and demonstration tool for:
+InventoryApp was built to demonstrate:
+- ASP.NET MVC design patterns  
+- Authentication & Authorization flow  
+- Database seeding and migrations  
+- CRUD operations with EF Core  
+- Clean, modular code structure following best practices  
 
-* .NET Core MVC architecture
-* Authentication & Authorization
-* Database seeding and migrations
-* CRUD operations with EF Core
-* MVC separation of concerns and clean structure
+---
 
 ## 🤝 Contributing
 
-If you’d like to improve or extend this project:
-
-1. Fork the repo
-2. Create a new branch (`feature/new-feature`)
-3. Submit a pull request
+1. Fork this repository  
+2. Create a feature branch (`feature/new-feature`)  
+3. Commit your changes and open a pull request  
 
 ---
 
 ## 🧑‍💻 Author
 
-**Muhammad Yameen**
-📧 [GitHub Profile](https://github.com/Yameen-21)
+**Muhammad Yameen**  
+📧 [m.yameen.zada@gmail.com](mailto:m.yameen.zada@gmail.com)  
+🌐 [GitHub Profile](https://github.com/Yameen-21)
 
+---
+
+© 2025 Muhammad Yameen — All Rights Reserved
