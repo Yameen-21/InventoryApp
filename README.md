@@ -71,12 +71,6 @@ This project demonstrates **role-based authentication**, **Entity Framework Core
 
 ---
 
-## 📸 Preview
-
-![App Screenshot](https://via.placeholder.com/900x400.png?text=Inventory+App+Dashboard)
-
----
-
 ## 🧠 About the Project
 
 This project was created as a learning and demonstration tool for:
@@ -86,8 +80,6 @@ This project was created as a learning and demonstration tool for:
 * Database seeding and migrations
 * CRUD operations with EF Core
 * MVC separation of concerns and clean structure
-
----
 
 ## 🤝 Contributing
 
@@ -101,19 +93,6 @@ If you’d like to improve or extend this project:
 
 ## 🧑‍💻 Author
 
-**Yameen**
+**Muhammad Yameen**
 📧 [GitHub Profile](https://github.com/Yameen-21)
 
----
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
-
-```
-
----
-
-✅ Copy the above block into your `README.md` file → save → commit and push.  
-Your GitHub project page will now automatically show this README beautifully formatted.
-```
